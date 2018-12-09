@@ -13,13 +13,19 @@ class App extends Component {
     summary: '',
     temperature: '',
     icon: '',
-    iconLogo: ''
+    iconLogo: '',
+    city: '',
+    state: ''
   }
 
   componentDidMount(){
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
-        this.setState({long: position.coords.longitude, lat: position.coords.latitude})
+        this.setState({long: position.coords.longitude, lat: position.coords.latitude}, function(){
+          fetch(`https://cors-anywhere.herokuapp.com/` + `https://nominatim.openstreetmap.org/reverse.php?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}&zoom=18`)
+            .then(res => res.json())
+            .then(data => this.setState({city: data.address.town, state: data.address.state}))
+        })
         this.getWeather(position.coords.longitude, position.coords.latitude)
       });
     } else {
@@ -53,6 +59,7 @@ class App extends Component {
       <div className="App">
         <div className="Aligner-item">
           <img src={this.state.iconLogo} alt="..."></img>
+          <p>{this.state.city}, {this.state.state}</p>
           <p>{this.state.summary}</p>
           <p>{this.state.temperature} °F <br /> {Math.round(((this.state.temperature-32) * 5 / 9) * 100) / 100} °C</p>
         </div>
