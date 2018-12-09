@@ -54,6 +54,16 @@ body {
   margin: 0 auto
 }
 
+.App {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 500px;
+}
 
+.Aligner-item {
+	max-width: 50%;
+}
+  
 
 

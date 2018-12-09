@@ -51,9 +51,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <img src={this.state.iconLogo} alt="..."></img>
-        <p>{this.state.summary}</p>
-        <p>{this.state.temperature} °F / {Math.round(((this.state.temperature-32) * 5 / 9) * 100) / 100} °C</p>
+        <div class="Aligner-item">
+          <img src={this.state.iconLogo} alt="..."></img>
+          <p>{this.state.summary}</p>
+          <p>{this.state.temperature} °F / {Math.round(((this.state.temperature-32) * 5 / 9) * 100) / 100} °C</p>
+        </div>
       </div>
     );
   }
