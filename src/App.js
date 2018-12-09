@@ -54,7 +54,7 @@ class App extends Component {
         <div className="Aligner-item">
           <img src={this.state.iconLogo} alt="..."></img>
           <p>{this.state.summary}</p>
-          <p>{this.state.temperature} °F / {Math.round(((this.state.temperature-32) * 5 / 9) * 100) / 100} °C</p>
+          <p>{this.state.temperature} °F <br /> {Math.round(((this.state.temperature-32) * 5 / 9) * 100) / 100} °C</p>
         </div>
       </div>
     );
