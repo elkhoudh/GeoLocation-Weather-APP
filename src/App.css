@@ -66,6 +66,7 @@ body {
 	max-width: 50%;
 	font-size: 30px;
 }
-  
 
-
+p {
+	padding: 10px;
+}
